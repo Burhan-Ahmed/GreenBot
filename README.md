@@ -2,7 +2,7 @@
 
 **GreenBot** is a smart solution for solid waste classification, utilizing advanced techniques for object detection. This web application visualizes real-time data from ultrasonic sensors, classified by GreenBot.
 
-![Landing Page](LandingPage.PNG)
+![Landing Page](/public/LandingPage.PNG)
 
 ## Description
 
