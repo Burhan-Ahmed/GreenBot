@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        'spin-slow': 'spin 2s linear infinite',
+      },
       fontFamily: {
         burh: ["Kumbh Sans", "sans-serif"],
       },

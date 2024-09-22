@@ -4,8 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-bot {
-  background-image: url("/UI/jozsef-hocza-mzovOU99uSI-unsplash.jpg");
-  /*background-size: cover; */
-  background-size: cover;
+/* avoid default loading icon of nextJK
+styles/globals.css */
+
+.next-loading-indicator {
+    display: none !important;
 }
