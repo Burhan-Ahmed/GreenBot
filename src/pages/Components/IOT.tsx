@@ -11,11 +11,11 @@ import {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function IOT() {
-  // Example sensor readings (replace with dynamic data)
+  // Example sensor readings with item counts (replace with dynamic data)
   const sensorData = [
-    { name: "Sensor 1", reading: 12.5 },
-    { name: "Sensor 2", reading: 15.3 },
-    { name: "Sensor 3", reading: 9.8 },
+    { name: "Box 1(Plastic)", reading: 12.5, count: 5 },
+    { name: "Box 2(Paper)", reading: 15.3, count: 8 },
+    { name: "Box 3(Metal)", reading: 9.8, count: 3 },
   ];
 
   // Maximum sensor range (in cm)
@@ -23,14 +23,14 @@ export default function IOT() {
 
   return (
     <>
-      <div className="bg-green-100 p-6 rounded-lg shadow-lg">
-        <div className="font-bold text-2xl mb-4 text-green-800">
+      <div className="bg-gradient-to-b from-green-500 to-green-800 p-6 rounded-lg shadow-lg">
+        <div className="font-bold text-2xl mb-4 text-white">
           IoT Sensor Data
         </div>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {sensorData.map(sensor => {
             const chartData = {
-              labels: ['Filled', 'unoccupied'],
+              labels: ['Filled', 'Unoccupied'],
               datasets: [
                 {
                   label: sensor.name,
@@ -48,6 +48,7 @@ export default function IOT() {
             return (
               <div key={sensor.name} className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center h-full">
                 <h2 className="text-lg font-semibold text-green-700">{sensor.name}</h2>
+                <div className="mt-2 text-gray-600">Items in Bin: {sensor.count}</div>
                 <div className="mt-4 h-36 w-full flex justify-center items-center">
                   <Pie
                     data={chartData}
