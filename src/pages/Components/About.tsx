@@ -49,7 +49,7 @@ export default function About() {
       </div>
       <div className="mt-8 flex justify-center">
         <img
-          src="/About/Robot.png"
+          src="/About/Robot.PNG"
           alt="Hardware and Robotic Arm"
           className="rounded-md shadow-lg max-w-lg w-full h-auto"
         />

@@ -11,7 +11,7 @@ export default function NavBar() {
   };
 
   return (
-    <div className="font-burh mx-16 text-2xl py-12 px-4 md:px-16 lg:px-32 flex justify-between items-center relative">
+    <div className="font-burh mx-4 md:mx-16 text-2xl py-12 px-4 md:px-16 lg:px-32 flex justify-between items-center relative">
       {/* Brand / Logo */}
       <h1 className="text-3xl md:text-4xl font-semibold">
         <div className="text-green-600 px-3 py-1">
