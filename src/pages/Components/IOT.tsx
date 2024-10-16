@@ -5,49 +5,45 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 // Register necessary components
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-// Define the structure of sensor data
-interface SensorData {
-  name: string;
-  reading: number;
-  count: number;
+// Define the structure of distance data
+interface DistanceData {
+  distance: number; // Distance value received from the API
 }
 
 const maxRange = 20; // Maximum sensor range in cm
 
 export default function IOT() {
-  const [sensorData, setSensorData] = useState<SensorData[]>([
-    { name: "Box 1 (Plastic)", reading: 0, count: 0 },
-    { name: "Box 2 (Paper)", reading: 0, count: 0 },
-    { name: "Box 3 (Metal)", reading: 0, count: 0 },
+  const [distanceData, setDistanceData] = useState<DistanceData[]>([
+    { distance: 0 }, // Initial distance data
   ]);
 
-  // Fetch sensor data from API every 2 seconds
+  // Fetch distance data from API every 2 seconds
   useEffect(() => {
-    const fetchSensorData = async () => {
+    const fetchDistanceData = async () => {
       try {
-        const response = await fetch('/api/sensors');
-        const data: SensorData[] = await response.json();
-        setSensorData(data);
+        const response = await fetch('/api/sensors'); // Adjust endpoint as necessary
+        const data: DistanceData[] = await response.json();
+        setDistanceData(data);
       } catch (error) {
-        console.error('Failed to fetch sensor data:', error);
+        console.error('Failed to fetch distance data:', error);
       }
     };
 
-    const interval = setInterval(fetchSensorData, 2000); // Fetch data every 2 seconds
+    const interval = setInterval(fetchDistanceData, 2000); // Fetch data every 2 seconds
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   return (
     <div className="bg-gradient-to-b from-green-500 to-green-800 p-6 rounded-lg shadow-lg">
-      <div className="font-bold text-2xl mb-4 text-white">IoT Sensor Data</div>
+      <div className="font-bold text-2xl mb-4 text-white">IoT Distance Sensor Data</div>
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {sensorData.map((sensor) => {
+        {distanceData.map((sensor, index) => {
           const chartData = {
-            labels: ['Filled', 'Unoccupied'],
+            labels: ['Measured Distance', 'Remaining Distance'],
             datasets: [
               {
-                label: sensor.name,
-                data: [sensor.reading, maxRange - sensor.reading], // Display remaining range
+                label: `Sensor ${index + 1}`, // Label can be dynamic or static
+                data: [sensor.distance, maxRange - sensor.distance], // Display remaining range
                 backgroundColor: [
                   'rgba(75, 192, 192, 0.6)', // Sensor reading color
                   'rgba(211, 211, 211, 0.6)', // Remaining range color
@@ -60,11 +56,11 @@ export default function IOT() {
 
           return (
             <div
-              key={sensor.name}
+              key={index} // Use index or a unique identifier for the key
               className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center h-full"
             >
-              <h2 className="text-lg font-semibold text-green-700">{sensor.name}</h2>
-              <div className="mt-2 text-gray-600">Items in Bin: {sensor.count}</div>
+              <h2 className="text-lg font-semibold text-green-700">Distance Sensor {index + 1}</h2>
+              <div className="mt-2 text-gray-600">Measured Distance: {sensor.distance} cm</div>
               <div className="mt-4 h-36 w-full flex justify-center items-center">
                 <Pie
                   data={chartData}
@@ -91,18 +87,14 @@ export default function IOT() {
                   height={200}
                 />
               </div>
-              <div className="mt-2 flex justify-between w-full">
-                <span className="text-gray-700">Reading:</span>
-                <span className="text-green-600">{sensor.reading} cm</span>
-              </div>
               <div className="mt-1 h-4 bg-gray-300 rounded-full overflow-hidden w-full">
                 <div
                   className="h-full bg-green-500 transition-all duration-300"
-                  style={{ width: `${(sensor.reading / maxRange) * 100}%` }}
+                  style={{ width: `${(sensor.distance / maxRange) * 100}%` }}
                 />
               </div>
               <span className="text-xs text-green-600 w-full text-right">
-                {(sensor.reading / maxRange * 100).toFixed(1)}%
+                {(sensor.distance / maxRange * 100).toFixed(1)}%
               </span>
             </div>
           );
