@@ -22,6 +22,9 @@ export default function IOT() {
     const fetchDistanceData = async () => {
       try {
         const response = await fetch('/api/sensors'); // Adjust endpoint as necessary
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data: DistanceData[] = await response.json();
         setDistanceData(data);
       } catch (error) {
@@ -42,11 +45,11 @@ export default function IOT() {
             labels: ['Measured Distance', 'Remaining Distance'],
             datasets: [
               {
-                label: `Sensor ${index + 1}`, // Label can be dynamic or static
-                data: [sensor.distance, maxRange - sensor.distance], // Display remaining range
+                label: `Sensor ${index + 1}`,
+                data: [sensor.distance, maxRange - sensor.distance],
                 backgroundColor: [
-                  'rgba(75, 192, 192, 0.6)', // Sensor reading color
-                  'rgba(211, 211, 211, 0.6)', // Remaining range color
+                  'rgba(75, 192, 192, 0.6)', // Measured distance color
+                  'rgba(211, 211, 211, 0.6)', // Remaining distance color
                 ],
                 borderColor: 'rgba(255, 255, 255, 1)',
                 borderWidth: 2,
@@ -56,7 +59,7 @@ export default function IOT() {
 
           return (
             <div
-              key={index} // Use index or a unique identifier for the key
+              key={index}
               className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center h-full"
             >
               <h2 className="text-lg font-semibold text-green-700">Distance Sensor {index + 1}</h2>
