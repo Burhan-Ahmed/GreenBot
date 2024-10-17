@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+import Head from 'next/head'; 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -11,6 +11,10 @@ export default function Home() {
 
   return (
     <>
+    <Head>
+    <title>GreenBot.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
       {/* Prevent scrollbar on body */}
       <style jsx global>{`
         body {

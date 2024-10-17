@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Head from 'next/head'; 
 import { FaUserCircle, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function About() {
@@ -30,6 +31,11 @@ export default function About() {
   ];
 
   return (
+    <>
+    <Head>
+    <title>About.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
     <motion.div
       className="bg-gradient-to-b from-green-500 to-green-800 min-h-screen px-4 md:px-8 lg:px-16" // Added responsive padding
       initial={{ opacity: 0 }}
@@ -108,5 +114,6 @@ export default function About() {
         </div>
       </footer>
     </motion.div>
+    </>
   );
 }

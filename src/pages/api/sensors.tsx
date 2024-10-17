@@ -1,16 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
-let currentDistance: number = 0; // Store the latest distance reading
+let latestNumber: number | null = null; // Declare with an explicit type
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    const { distance } = req.body;
-    currentDistance = distance; // Update the stored distance
-    return res.status(200).json({ message: 'Distance updated' });
-  } else if (req.method === 'GET') {
-    return res.status(200).json({ distance: currentDistance }); // Send the latest distance
-  } else {
-    res.setHeader('Allow', ['GET', 'POST']);
-    return res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
+export async function POST(request: Request) {
+    const data = await request.json();
+    latestNumber = data.number; // Get the number from ESP32
+    console.log("Received number:", latestNumber);
+    return NextResponse.json({ success: true });
+}
+
+export function GET(request: Request) {
+    return NextResponse.json({ latestNumber }); // Send the latest number back to the client
 }
