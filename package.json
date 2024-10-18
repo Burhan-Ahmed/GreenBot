@@ -14,7 +14,7 @@
     "@heroicons/react": "^2.1.5",
     "@mui/icons-material": "^6.1.1",
     "@mui/material": "^6.1.1",
-    "chart.js": "^4.4.4",
+    "chart.js": "^4.4.5",
     "framer-motion": "^11.5.6",
     "next": "14.2.1",
     "react": "^18",
