@@ -13,9 +13,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 // Define the SensorData interface
 interface SensorData {
-  sensor1: number | null;
-  sensor2: number | null;
-  sensor3: number | null;
+  sensor1: number | null; // Distance for sensor 1
+  sensor2: number | null; // Distance for sensor 2
+  sensor3: number | null; // Distance for sensor 3
 }
 
 const SensorFeedPage: React.FC = () => {
@@ -50,9 +50,9 @@ const SensorFeedPage: React.FC = () => {
 
   // Create a sensors array for rendering
   const sensors = [
-    { id: 1, name: "Plastic", filled: sensorData.sensor1, items: 5, distance: sensorData.sensor1, },
-    { id: 2, name: "Paper", filled: sensorData.sensor2, items: 8, distance: sensorData.sensor2, },
-    { id: 3, name: "Metal", filled: sensorData.sensor3, items: 3, distance: sensorData.sensor3, },
+    { id: 1, name: "Plastic", distance: sensorData.sensor1 },
+    { id: 2, name: "Paper", distance: sensorData.sensor2 },
+    { id: 3, name: "Metal", distance: sensorData.sensor3 },
   ];
 
   return (
@@ -63,8 +63,12 @@ const SensorFeedPage: React.FC = () => {
 
       <div className="flex flex-col my-12 md:flex-row justify-around mt-4 space-y-4 md:space-y-0 md:space-x-4">
         {sensors.map((sensor) => {
+          // Calculate fill percentage: higher distance means lower fill percentage
+          const maxDistance = 100; // Set your maximum distance here (in cm)
+          const fillPercentage = sensor.distance !== null ? Math.max(0, Math.min(100, (maxDistance - sensor.distance) * 100 / maxDistance)) : 0;
+          
           // Determine colors based on the `filled` value
-          const isCritical = sensor.filled && sensor.filled >= 80;
+          const isCritical = fillPercentage >= 80; // Define critical fill level
           const pieColors = isCritical
             ? ["#FF7043", "#FFCCBC"] // Red theme
             : ["#4DB6AC", "#E0E0E0"]; // Green theme
@@ -86,7 +90,7 @@ const SensorFeedPage: React.FC = () => {
                     labels: ["Filled", "Unoccupied"],
                     datasets: [
                       {
-                        data: sensor.filled !== null ? [sensor.filled, 100 - sensor.filled] : [0, 100],
+                        data: [fillPercentage, 100 - fillPercentage],
                         backgroundColor: pieColors,
                       },
                     ],
@@ -124,11 +128,11 @@ const SensorFeedPage: React.FC = () => {
                 <div className="bg-gray-200 h-4 rounded-full overflow-hidden">
                   <div
                     className={`h-4 rounded-full ${barColor} transition-all duration-300`}
-                    style={{ width: `${sensor.filled !== null ? sensor.filled : 0}%` }}
+                    style={{ width: `${fillPercentage}%` }} // Use fillPercentage for the width
                   />
                 </div>
                 <p className={`text-right ${textColor} text-s mt-1`}>
-                  {sensor.filled !== null ? `${sensor.filled}%` : "No data"}
+                  {sensor.distance !== null ? `${fillPercentage.toFixed(1)}%` : "No data"} {/* Display fill percentage */}
                 </p>
               </div>
             </div>
