@@ -22,5 +22,5 @@ GreenBot aims to provide a comprehensive system for managing solid waste through
 - **Real-Time Communication**: Http method(continuos pooling)
 
 ## Results
-Check Frontend at : https://green-bot.vercel.app/Components/IOT
-Check Backend at : https://green-bot.vercel.app/api/sensors
+- Check Frontend at : https://green-bot.vercel.app/Components/IOT
+- Check Backend at : https://green-bot.vercel.app/api/sensors
