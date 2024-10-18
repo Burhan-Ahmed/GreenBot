@@ -17,16 +17,10 @@ GreenBot aims to provide a comprehensive system for managing solid waste through
 - **Data Insights**: Analyzes and presents key metrics related to waste classification.
 
 ## Technologies Used
-
 - **Frontend**: React, Tailwind CSS, Next.js, Material UI
 - **Backend**: Processing (please specify the backend technology if applicable)
-- **Database**: Processing (please specify the database used if applicable)
-- **Real-Time Communication**: Processing (please specify the method used for real-time updates)
+- **Real-Time Communication**: Http method(continuos pooling)
 
-## Installation
-
-Instructions for setting up the project locally:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Burhan-Ahmed/GreenBot
+## Results
+Check Frontend at : https://green-bot.vercel.app/Components/IOT
+Check Backend at : https://green-bot.vercel.app/api/sensors
