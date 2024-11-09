@@ -56,7 +56,7 @@ const SensorFeedPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-green-500 p-4 overflow-hidden">
+    <div className="bg-green-500 p-4 overflow-hidden font-burh">
       <header className="text-center py-3 border-b-2 border-t-2 border-white text-white text-4xl my-10">
         IoT Sensor Data
       </header>
@@ -66,7 +66,7 @@ const SensorFeedPage: React.FC = () => {
           // Calculate fill percentage: higher distance means lower fill percentage
           const maxDistance = 100; // Set your maximum distance here (in cm)
           const fillPercentage = sensor.distance !== null ? Math.max(0, Math.min(100, (maxDistance - sensor.distance) * 100 / maxDistance)) : 0;
-          
+
           // Determine colors based on the `filled` value
           const isCritical = fillPercentage >= 80; // Define critical fill level
           const pieColors = isCritical

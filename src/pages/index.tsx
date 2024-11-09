@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Head from 'next/head'; 
+import Head from 'next/head';
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -11,10 +11,10 @@ export default function Home() {
 
   return (
     <>
-    <Head>
-    <title>GreenBot.</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
+      <Head>
+        <title>GreenBot.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       {/* Prevent scrollbar on body */}
       <style jsx global>{`
         body {
@@ -25,7 +25,7 @@ export default function Home() {
 
       {/* Main content area */}
       <div
-        className={`h-screen transition-opacity duration-700 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"} 
+        className={`h-screen font-burh transition-opacity duration-700 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"} 
           flex justify-center items-center bg-gradient-to-b from-green-500 to-green-800`}
       >
         <div className="max-w-4xl text-center px-4 py-10 md:px-6">
