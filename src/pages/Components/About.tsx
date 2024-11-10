@@ -38,7 +38,7 @@ export default function About() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <motion.div
-        className="bg-gradient-to-b from-green-500 to-green-800 min-h-screen px-4 md:px-8 lg:px-16" // Added responsive padding
+        className="bg-gradient-to-b from-green-500 to-green-800 min-h-screen px-6 md:px-8 lg:px-16" // Added responsive padding
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -79,7 +79,7 @@ export default function About() {
             <div className="bg-black rounded-lg shadow-md p-4 m-2 flex-1 flex flex-col items-center text-white">
               <FaUserCircle className="w-24 h-24 text-gray-400" />
               <h3 className="font-semibold my-3">Dr. Ayesha Salman</h3>
-              <p>Role: Supervisor</p>
+              <p>Supervisor</p>
               <div className="flex-grow"></div>
               <div className="flex space-x-4 justify-center items-center mt-4">
                 <a href="https://github.com/johndoe" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-200">
@@ -94,7 +94,7 @@ export default function About() {
             <div className="bg-black rounded-lg shadow-md p-4 m-2 flex-1 flex flex-col items-center text-white">
               <FaUserCircle className="w-24 h-24 text-gray-400" />
               <h3 className="font-semibold my-3">Engr. Ayesha Sadiq</h3>
-              <p>Role: Co-Supervisor</p>
+              <p>Co-Supervisor</p>
               <div className="flex-grow"></div>
               <div className="flex space-x-4 justify-center items-center mt-4">
                 <a href="https://github.com/janesmith" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-200">
