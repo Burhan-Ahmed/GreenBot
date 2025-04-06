@@ -10,6 +10,12 @@
 GreenBot aims to provide a comprehensive system for managing solid waste through real-time data visualization and classification. By leveraging cutting-edge technologies, it helps improve waste management efficiency and promotes environmental sustainability.
 
 ![AWS Sensor Feed](/public/AWSRealTime.PNG)
+
+### Mobile Interface
+| ![Mobile Interface 1](/public/m1.PNG) | ![Mobile Interface 2](/public/m2.PNG) |
+| ------------------------------------ | ------------------------------------ |
+
+
 ## Features
 
 - **Real-Time Data Display**: Visualizes live data from ultrasonic sensors.
