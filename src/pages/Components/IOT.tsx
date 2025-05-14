@@ -49,11 +49,12 @@ const SensorFeedPage: React.FC = () => {
   }, []);
 
   // Create a sensors array for rendering
-  const sensors = [
-    { id: 1, name: "Plastic", distance: sensorData.sensor1 },
-    { id: 2, name: "Paper", distance: sensorData.sensor2 },
-    { id: 3, name: "Metal", distance: sensorData.sensor3 },
-  ];
+const sensors = [
+  { id: 1, name: "Plastic", distance: sensorData.sensor1, maxDepth: 11.94 },
+  { id: 2, name: "Paper", distance: sensorData.sensor2, maxDepth: 11.51 },
+  { id: 3, name: "Metal", distance: sensorData.sensor3, maxDepth: 12.18 },
+];
+
 
   return (
     <div className="bg-green-500 p-4 overflow-hidden font-burh">
@@ -64,8 +65,10 @@ const SensorFeedPage: React.FC = () => {
       <div className="flex flex-col my-12 md:flex-row justify-around mt-4 space-y-4 md:space-y-0 md:space-x-4">
         {sensors.map((sensor) => {
           // Calculate fill percentage: higher distance means lower fill percentage
-          const maxDistance = 100; // Set your maximum distance here (in cm)
-          const fillPercentage = sensor.distance !== null ? Math.max(0, Math.min(100, (maxDistance - sensor.distance) * 100 / maxDistance)) : 0;
+          const fillPercentage = sensor.distance !== null
+  ? Math.max(0, Math.min(100, ((sensor.maxDepth - sensor.distance) / sensor.maxDepth) * 100))
+  : 0;
+
 
           // Determine colors based on the `filled` value
           const isCritical = fillPercentage >= 80; // Define critical fill level
