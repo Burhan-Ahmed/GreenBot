@@ -22,13 +22,13 @@ export default function About() {
       twitter: 'https://twitter.com/your-twitter-username2',
     },
     {
-      name: 'Muhammad Ali Raza',
-      role: 'Motivational Speaker',
-      expertise: 'Provided emotional support when needed',
-      github: 'https://github.com/your-github-username3',
-      linkedin: 'https://linkedin.com/in/your-linkedin-username3',
-      twitter: 'https://twitter.com/your-twitter-username3',
-    },
+    "name": "Muhammad Ali Raza",
+    "role": "Data Scientist and IoT Integration Developer",
+    "expertise": "Collected, annotated, and cleaned datasets for the project. Conducted research contributing to the project's paper and developed the IoT integration components.",
+    "github": "https://github.com/your-github-username3",
+    "linkedin": "https://linkedin.com/in/your-linkedin-username3",
+    "twitter": "https://twitter.com/your-twitter-username3"
+  }
   ];
 
   return (
