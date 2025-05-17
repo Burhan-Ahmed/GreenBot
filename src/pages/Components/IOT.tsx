@@ -42,7 +42,7 @@ const SensorFeedPage: React.FC = () => {
   useEffect(() => {
     // Fetch data immediately on component mount and then every 5 seconds
     fetchSensorData(); // Fetch immediately on mount
-    const interval = setInterval(fetchSensorData, 5000);
+    const interval = setInterval(fetchSensorData, 1000);
 
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
